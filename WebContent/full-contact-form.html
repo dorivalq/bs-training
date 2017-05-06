@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="ISO-8859-1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Form Horizontal</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+	<div class="page-header col-sm-12 col-md-12 "><h1><span class="glyphicon glyphicon-phone-alt">
+		</span>&nbsp; We would like to hear from you!!</h1></div>
+	<form class="form-horizontal">
+		<div class="form-group">
+			<label for="name" class="col-sm-3 control-label">Name</label>
+			<div class="col-sm-9 col-xs-9">
+				<div class="input-group">
+					<span class="input-group-addon glyphicon glyphicon-user"></span>
+					<input placeholder="Your Name" id="name" type="text" class="form-control">
+				</div>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label for="email" class="col-sm-3 control-label">Email</label>
+			<div class="col-sm-9" >
+				<div class="input-group" >
+					<span class="input-group-addon">@</span>
+					<input type="email" class="form-control readonly" id="email" placeholder="Your Email">
+				</div>
+			</div>
+		</div>
+		
+		<div class="form-group" >
+			<label for="yourComments" class="col-sm-3 control-label">Tell Us</label>
+			<div class="col-sm-9">
+				<div class="input-group">
+					<span class="input-group-addon glyphicon glyphicon-comment"></span>
+					<textarea class="form-control" id="yourComments" placeholder="Your comments here" rows="" ></textarea>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-9 col-sm-offset-3">
+			<div class="checkbbox">
+				<label><input type="checkbox">Subscribe Me!!</label>
+			</div>
+		</div>
+		<div class="clearfix"> &nbsp;</div>
+		<div class="col-sm-12 text-center">
+			<button type="submit" class="btn btn-primary btn-lg">
+			<span class="glyphicon glyphicon-envelope"></span>&nbsp; Post It</button>
+		</div>
+	</form>
+</div>
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="../bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

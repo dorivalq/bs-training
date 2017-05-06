@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html ng-app="crud1">
+<head>
+
+	<script src="./angular-1.6.3/angular.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.js"></script>
+	
+
+	<script>
+	
+	//js code will be moved to separeted file
+		var app = angular.module('crud1', []);
+	
+		app.controller('crudController', function($scope) {
+			$scope.lista = [ {
+				id : '1',
+				name : 'Product1',
+				price : '6,80',
+				quantity : '8'
+			}, {
+				id : '2',
+				name : 'Product2',
+				price : '9,80',
+				quantity : '4'
+			}, {
+				id : '3',
+				name : 'Product3',
+				price : '7,80',
+				quantity : '9'
+			}, {
+				id : '4',
+				name : 'Product4',
+				price : '3,80',
+				quantity : '3'
+			} ];
+	
+			$scope.add = function() {
+				if (angular.isUndefined($scope.id)
+						&& angular.isUndefined($scope.name)) {
+					alert('Campos não preenchido');
+					return false;
+				}
+				$scope.lista.push({
+					id : $scope.id,
+					name : $scope.name,
+					price : $scope.price,
+					quantity : $scope.quantity
+				});
+				$scope.id = '';
+				$scope.name = '';
+				$scope.price = '';
+				$scope.quantity = '';
+	
+			};
+	
+			$scope.edit = function() {
+				var index = getSelected($scope.id);
+				if (index > -1) {
+					$scope.lista[index].name = $scope.name;
+					$scope.lista[index].price = $scope.price;
+					$scope.lista[index].quantity = $scope.quantity;
+				}
+			}
+			$scope.del = function(id) {
+				var result = confirm('Are you sure?');
+	
+				if (result === true) {
+					var index = getSelected(id);
+					$scope.lista.splice(index, 1);
+				}
+			};
+	
+			$scope.selectEdit = function(id) {
+				var index = getSelected(id);
+				if (index > -1) {
+					var product = $scope.lista[index];
+					$scope.id = product.id;
+					$scope.name = product.name;
+					$scope.price = product.price;
+					$scope.quantity = product.quantity;
+				} else {
+					alert('Not found');
+				}
+	
+			}
+	
+			function getSelected(id) {
+				for (var i = 0; i < $scope.lista.length; i++) {
+					if ($scope.lista[i].id === id) {
+						return i;
+					}
+				}
+				return -1;
+			}
+			;
+	
+		});
+	</script>
+</head>
+<body ng-controller="crudController">
+<div class="page-header col-sm-12 col-md-12"><h1>
+	<span class="glyphicon glyphicon-phone-alt"> Product Management </span> </h1></div>
+<div class="container">
+	<div class="col-md-12">
+		<table class="table table-bordered  table-hover table-responsive">
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Price</th>
+			<th>Quantity</th>
+			<th>Del</th>
+			<th>Edit</th>
+		</tr>
+		<tr ng-repeat="product in lista">
+			<td>{{product.id}}</td>
+			<td>{{product.name}}</td>
+			<td>{{product.price}}</td>
+			<td>{{product.quantity}}</td>
+			<td ng-click="del(product.id)">Del</td>
+			<td ng-click="selectEdit(product.id)">Edit</td>
+		</tr>
+	</table>
+	</div>
+	<div class="col-md-12">
+	<h3>Product Detail</h3>
+	<table class="table table-bordered table-responsive">
+		<tr>
+			<td>id</td>
+			<td><input type="text" ng-model="id"></td>
+		</tr>
+		<tr>
+			<td>name</td>
+			<td><input type="text" ng-model="name"></td>
+		</tr>
+		<tr>
+			<td>price</td>
+			<td><input type="text" ng-model="price"></td>
+		</tr>
+		<tr>
+			<td>quantity</td>
+			<td><input type="text" ng-model="quantity"></td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td><input type="button" value="Add" ng-click="add()"> <input
+				type="button" value="Save" ng-click="edit()"></td>
+
+		</tr>
+	</table>
+	</div>
+</div>
+
+
+
+</body>
+</html>
