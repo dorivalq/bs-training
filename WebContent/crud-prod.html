@@ -14,6 +14,7 @@
 		var app = angular.module('crud1', []);
 	
 		app.controller('crudController', function($scope) {
+			
 			$scope.lista = [ {
 				id : '1',
 				name : 'Product1',
@@ -100,7 +101,11 @@
 	</script>
 </head>
 <body ng-controller="crudController">
-<div class="page-header col-sm-12 col-md-12"><h1>
+
+	<div class="page-header col-sm-12 col-md-12 col-sm-12 col-lg-11 col-lg-offset-1 "><h1>
+	<a href="./megastore-home.html"><span class="glyphicon glyphicon-home">Home</span></a></h1></div>
+	
+<div class="page-header col-sm-12 col-md-12 col-sm-12 col-lg-11 col-lg-offset-1 "><h1>
 	<span class="glyphicon glyphicon-phone-alt"> Product Management </span> </h1></div>
 <div class="container">
 	<div class="col-md-12 jumbotron">
@@ -118,8 +123,8 @@
 			<td>{{product.name}}</td>
 			<td>{{product.price}}</td>
 			<td>{{product.quantity}}</td>
-			<td ng-click="del(product.id)">Del</td>
-			<td ng-click="selectEdit(product.id)">Edit</td>
+			<td ng-click="del(product.id)"><span class="glyphicon glyphicon-remove "></span></td>
+			<td ng-click="selectEdit(product.id)"><span class="glyphicon glyphicon-edit "></span> </td>
 		</tr>
 	</table>
 	</div>
@@ -157,11 +162,11 @@
 		</div>
 		<div class="clearfix">&nbsp;</div>
 		<div class="col-sm-12 text-center">
-			<button ng-click="edit()" type="submit" class="btn btn-primary btn-lg">Edit</button>
+			<button ng-click="edit()" type="submit" class="btn btn-primary btn-lg">Save</button>
 			<button ng-click="add()" type="submit" class="btn btn-primary btn-lg">Add</button>
 		</div>
 		</form>
-		</div>
+		</div>	
 	</div>
 	
 </body>
