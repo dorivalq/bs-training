@@ -10,10 +10,11 @@
 
 	<script>
 	
-	//js code will be moved to separeted file
+	//js code will be moved to a js file
 		var app = angular.module('crud1', []);
 	
 		app.controller('crudController', function($scope) {
+			
 			$scope.lista = [ {
 				id : '1',
 				name : 'Product1',
@@ -100,10 +101,14 @@
 	</script>
 </head>
 <body ng-controller="crudController">
-<div class="page-header col-sm-12 col-md-12"><h1>
+
+	<div class="page-header col-sm-12 col-md-12 col-sm-12 col-lg-11 col-lg-offset-1 "><h1>
+	<a href="./megastore-home.html"><span class="glyphicon glyphicon-home">Home</span></a></h1></div>
+	
+<div class="page-header col-sm-12 col-md-12 col-sm-12 col-lg-11 col-lg-offset-1 "><h1>
 	<span class="glyphicon glyphicon-phone-alt"> Product Management </span> </h1></div>
 <div class="container">
-	<div class="col-md-12">
+	<div class="col-md-12 jumbotron">
 		<table class="table table-bordered  table-hover table-responsive">
 		<tr>
 			<th>ID</th>
@@ -118,41 +123,51 @@
 			<td>{{product.name}}</td>
 			<td>{{product.price}}</td>
 			<td>{{product.quantity}}</td>
-			<td ng-click="del(product.id)">Del</td>
-			<td ng-click="selectEdit(product.id)">Edit</td>
+			<td ng-click="del(product.id)"><span class="glyphicon glyphicon-remove "></span></td>
+			<td ng-click="selectEdit(product.id)"><span class="glyphicon glyphicon-edit "></span> </td>
 		</tr>
 	</table>
 	</div>
-	<div class="col-md-12">
-	<h3>Product Detail</h3>
-	<table class="table table-bordered table-responsive">
-		<tr>
-			<td>id</td>
-			<td><input type="text" ng-model="id"></td>
-		</tr>
-		<tr>
-			<td>name</td>
-			<td><input type="text" ng-model="name"></td>
-		</tr>
-		<tr>
-			<td>price</td>
-			<td><input type="text" ng-model="price"></td>
-		</tr>
-		<tr>
-			<td>quantity</td>
-			<td><input type="text" ng-model="quantity"></td>
-		</tr>
-		<tr>
-			<td>&nbsp;</td>
-			<td><input type="button" value="Add" ng-click="add()"> <input
-				type="button" value="Save" ng-click="edit()"></td>
-
-		</tr>
-	</table>
 	</div>
-</div>
+	
+	<div class="container ">
+	<div class="jumbotron">
+	<form class="form-horizontal">
+		<h3><span class="col-sm-12 text-center" >Edit Product Details</span></h3>
 
-
-
+		<div class="form-group" >
+			<label for="idProduto" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">Id Produto</label>
+			<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 ">
+				<input ng-model="id" placeholder="Product Id" id="idProduto" type="text" class="form-control">
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label for="name" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">Name</label>
+			<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 ">
+				<input ng-model="name"  type="text" class="form-control" id="name" placeholder="Product Name" >
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="price" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">Price</label>
+			<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 ">
+				<input ng-model="price"  class="form-control" id="price" placeholder="0,00" >
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="quantity" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">Quantity</label>
+			<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 ">
+				<input ng-model="quantity"  type="text" class="form-control" placeholder="0" id="quantity">
+			</div>
+		</div>
+		<div class="clearfix">&nbsp;</div>
+		<div class="col-sm-12 text-center">
+			<button ng-click="edit()" type="submit" class="btn btn-primary btn-lg">Save</button>
+			<button ng-click="add()" type="submit" class="btn btn-primary btn-lg">Add</button>
+		</div>
+		</form>
+		</div>	
+	</div>
+	
 </body>
 </html>

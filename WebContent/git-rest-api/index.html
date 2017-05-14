@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="github">
+<head>
+<meta charset="ISO-8859-1">
+<title>{{titulo}}</title>
+
+	<script type="text/javascript" src="./js/angular.js"></script>
+	<script type="text/javascript" src="./js/controller.js"></script>
+	<link rel="stylesheet" href="../../bootstrap/css/bootstrap.css">
+</head>
+<body ng-controller="MainController">
+	<div class="page-header">
+		<h2 align="center">{{titulo}}</h2>
+	</div>
+
+	<div id="todo-form" class="row" >
+		<div class="col-sm-8 col-sm-offset-2 text-center" >
+			<form name="searchuser" ng-submit="search(username)" >
+				<div class="form-group">
+				<label for="username">Informe o Usuario do GitHub</label>
+					<input id="username" type="search" ng-model="username" required="required" placeholder="Username">
+					<button type="submit" class="btn btn-primary btn-lg" >Consultar Projetos</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<hr>
+	<div id="result" align="center">
+	<h3>Projetos no GitHub</h3>
+	<table class="tabble table-bordered" >
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Stars</th>
+				<th>Language</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+		<tr ng-repeat="item in repos">
+			<td>
+				{{item.name}}
+			</td>
+			<td>
+				{{item.stargazers_count}}
+			</td>
+			<td>
+				{{item.language}}
+			</td>
+			<td>{{item.description}}</td>		
+		</tr>
+		</tbody>
+	</table>
+	</div>
+</body>
+</html>
